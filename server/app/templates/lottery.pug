@@ -1,0 +1,17 @@
+extends base
+
+block head
+  link(rel='stylesheet' href=url_for('static', filename='css/bingo.css'))
+  script(src=url_for('static', filename='js/bingo.js'))
+
+block content
+  section
+    article#bingo
+      .canvas
+        .grids
+          each _ in range(49)
+            .grid
+      .winner
+        p= winner
+
+// vim: set ts=2 sw=2 et:
