@@ -1,3 +1,7 @@
+@import url(../font/cream/cream.css);
+@import url(../font/jinxuan/jinxuan.css);
+
+
 html {
   font-size: 16px;
   background-color: #DEDADA;
@@ -44,8 +48,8 @@ article#bingo .canvas .grid:nth-child(7n+7){
   opacity: 0;
 }
 
-article#bingo .winner p {
-  font-size: 8em;
+article#bingo .winner {
+  font-family: 凝書體, 金萱;
   text-align: center;
   margin: 0 auto;
   height: 0;
@@ -57,6 +61,16 @@ article#bingo .winner p {
                0    4px 0 #DEDADA,  0   -4px 0 #DEDADA,
                2px  2px 0 #DEDADA, -2px -2px 0 #DEDADA,
                2px -2px 0 #DEDADA, -2px  2px 0 #DEDADA;
+
+article#bingo .winner p#name {
+  font-size: 8em;
+  margin: -.2em;
 }
+
+article#bingo .winner p#id {
+  font-size: 3em;
+  font-weight: bold;
+}
+
 
 // vim: set ts=2 sw=2 et:
