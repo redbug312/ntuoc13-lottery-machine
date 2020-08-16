@@ -18,4 +18,4 @@ start: env
 	$(ENV) make start -C server
 
 test: env
-	$(ENV) pytest test
+	$(ENV) python3 -i test.py
