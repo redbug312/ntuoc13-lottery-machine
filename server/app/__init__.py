@@ -13,7 +13,7 @@ dataframe = pd.read_csv(app.config['ATTENDEES_CSV'])
 
 @app.route('/')
 def index():
-    winner = dataframe.sample(n=1).iloc[0, 1]
+    winner = dataframe.sample(n=1).iloc[0]
     return render_template('lottery.pug', winner=winner)
 
 
