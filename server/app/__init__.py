@@ -3,12 +3,14 @@ from werkzeug.exceptions import HTTPException
 
 from .models import db
 from .views.api import api
+from .views.lottery import lottery
 
 
 app = Flask(__name__, template_folder='templates')
 app.jinja_env.add_extension('pypugjs.ext.jinja.PyPugJSExtension')
 app.config.from_pyfile('instance/default.py')
 app.register_blueprint(api)
+app.register_blueprint(lottery)
 
 
 @app.route('/')

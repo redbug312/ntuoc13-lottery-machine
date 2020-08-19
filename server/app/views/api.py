@@ -9,23 +9,25 @@ api = Blueprint('api', __name__)
 
 @api.route('/api/draw')
 def draw():
-    n = request.args.get('n')
-    seed = request.args.get('seed')
-    if not seed:
-        seed = random.randint(100000, 999999)
-        return redirect(url_for('.draw', n=n, seed=seed))
+    kwargs = {key: request.args.get(key)
+              for key in ['n', 'seed', 'prefix']}
+    if not kwargs['seed']:
+        kwargs['seed'] = random.randint(100000, 999999)
+        return redirect(url_for('.draw', **kwargs))
     try:
-        n = int(n) if n else 1
-        seed = int(seed)
+        kwargs['n'] = int(kwargs['n']) if kwargs['n'] else 1
+        kwargs['seed'] = int(kwargs['seed'])
     except ValueError:
-        abort(401)  # When argument failed casting
-    result = db.draw(n=n, seed=seed).to_dict(orient='records')
+        return abort(401)  # When argument failed casting
+    result = db.draw(**kwargs).to_dict(orient='records')
     return jsonify(result)
 
 
 @api.route('/api/lookup')
 def lookup():
-    result = db.lookup().to_dict(orient='records')
+    kwargs = {key: request.args.get(key)
+              for key in ['prefix']}
+    result = db.lookup(**kwargs).to_dict(orient='records')
     return jsonify(result)
 
 
