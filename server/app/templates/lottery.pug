@@ -1,16 +1,16 @@
 extends base
 
 block head
-  link(rel='stylesheet' href=url_for('static', filename='css/bingo.css'))
   script(src=url_for('static', filename='js/bingo.js'))
+  link(rel='stylesheet' href=url_for('static', filename='css/bingo.css'))
 
 block content
   section
     article#bingo
       .canvas
-        .grids
+        .squares
           each _ in range(49)
-            .grid
+            .square
       .winner
         p#name= winner.姓名
         p#id= winner.學號

@@ -27,29 +27,30 @@ article#bingo {
 article#bingo .canvas {
   /* border: .1rem solid #000; */
   /* overflow: hidden; */
+  width:  calc(4rem * 5 + 1rem * 4 + 2rem);
+  height: calc(4rem * 5 + 1rem * 4 + 2rem);
 }
 
-article#bingo .canvas .grids {
+article#bingo .canvas .squares {
   display: grid;
   grid-gap: 1rem;
   grid-template: repeat(7, 1fr) / repeat(7, 1fr);
-  width:  calc(4rem * 5 + 1rem * 4 + 1rem);
-  height: calc(4rem * 5 + 1rem * 4 + 1rem);
-  transform: translate(-4.5rem, -4.5rem);
+  transform: translate(-4rem, -4rem);
 }
 
-article#bingo .canvas .grid {
+article#bingo .canvas .square {
   width:  4rem;
   height: 4rem;
-  border: .25rem solid rgba(100,100,100,.8);
+  border: .25rem solid rgba(34,36,38,.5);
   border-radius: 4%;
+  box-shadow: 0 1px 2px 0 rgba(34,36,38,.3);
   mix-blend-mode: lighten;
 }
 
-article#bingo .canvas .grid:nth-child(n+43),
-article#bingo .canvas .grid:nth-child(-n+7),
-article#bingo .canvas .grid:nth-child(7n+1),
-article#bingo .canvas .grid:nth-child(7n+7){
+article#bingo .canvas .square:nth-child(n+43),
+article#bingo .canvas .square:nth-child(-n+7),
+article#bingo .canvas .square:nth-child(7n+1),
+article#bingo .canvas .square:nth-child(7n+7){
   opacity: 0;
 }
 
@@ -70,7 +71,7 @@ article#bingo .winner {
 
 article#bingo .winner p#name {
   font-size: 8em;
-  margin: -.7em 0 -.2em;
+  margin: -.8em 0 -.2em;
 }
 
 article#bingo .winner p#id {
