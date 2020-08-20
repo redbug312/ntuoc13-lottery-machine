@@ -13,17 +13,14 @@ def draw(role):
     if role not in prefixes.keys():
         return abort(404)  # Invalid role found
 
-    i = request.args.get('i')
-    seed = request.args.get('seed')
+    try:
+        i = request.args.get('i', default=0, type=int)
+        seed = request.args.get('seed', type=int)
+    except ValueError:
+        return abort(401)  # When argument failed casting
     if not seed:
         seed = random.randint(100000, 999999)
         return redirect(url_for('.draw', role=role, i=0, seed=seed))
-
-    try:
-        i = int(i) if i else 0
-        seed = int(seed)
-    except ValueError:
-        return abort(401)  # When argument failed casting
 
     prefix = prefixes[role]
     winners = db.draw(n=3, seed=seed, prefix=prefix)
