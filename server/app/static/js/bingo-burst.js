@@ -39,7 +39,7 @@ $(document).ready(function(){
   var burst = anime.timeline({
     // autoplay: false,
     easing: 'easeInOutCubic',
-    begin: () => canvas.style.overflow = 'visible',
+    // begin: () => canvas.style.overflow = 'visible',
   })
   .add({  // Highlight central border-color
     targets: central,

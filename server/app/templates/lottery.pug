@@ -1,7 +1,7 @@
 extends base
 
 block head
-  script(src=url_for('static', filename='js/bingo.js'))
+  script(src=url_for('static', filename='js/bingo-#{anim}.js'))
   link(rel='stylesheet' href=url_for('static', filename='css/bingo.css'))
 
 block content
@@ -12,7 +12,8 @@ block content
           each _ in range(49)
             .square
       .winner
-        p#name= winner.姓名
-        p#id= winner.學號
+        if winner
+          p#name= winner.姓名
+          p#id= winner.學號
 
 // vim: set ts=2 sw=2 et:

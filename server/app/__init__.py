@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, abort
 from werkzeug.exceptions import HTTPException
 
 from .models import db
@@ -15,8 +15,7 @@ app.register_blueprint(lottery)
 
 @app.route('/')
 def index():
-    winner = db.draw(n=1, seed=None).iloc[0]
-    return render_template('lottery.pug', winner=winner)
+    return abort(401)
 
 
 @app.errorhandler(HTTPException)
