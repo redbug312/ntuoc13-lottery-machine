@@ -21,8 +21,6 @@ article#bingo {
   display: flex;
   flex-direction: column;
   align-items: center;
-  user-select: none;
-  -webkit-user-select: none;
 }
 
 article#bingo .canvas {
@@ -46,6 +44,10 @@ article#bingo .canvas .square {
   border-radius: 4%;
   box-shadow: 0 1px 2px 0 rgba(34,36,38,.3);
   mix-blend-mode: lighten;
+}
+
+article#bingo .canvas .square:nth-child(25):hover {
+  cursor: pointer;
 }
 
 article#bingo .canvas .square:nth-child(n+43),

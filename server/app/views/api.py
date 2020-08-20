@@ -25,9 +25,8 @@ def draw():
 
 @api.route('/api/lookup')
 def lookup():
-    kwargs = {key: request.args.get(key)
-              for key in ['prefix']}
-    result = db.lookup(**kwargs).to_dict(orient='records')
+    prefix = request.args.get('prefix')
+    result = db.lookup(prefix=prefix).to_dict(orient='records')
     return jsonify(result)
 
 

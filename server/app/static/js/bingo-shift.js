@@ -72,6 +72,10 @@ $(document).ready(function(){
 
   animation();
 
+  var next = document.querySelector('#next').href;
+  square[24].onclick = () => {
+    window.location.href = next;
+  }
 });
 
 

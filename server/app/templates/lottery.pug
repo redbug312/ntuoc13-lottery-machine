@@ -1,7 +1,10 @@
 extends base
 
 block head
-  script(src=url_for('static', filename='js/bingo-#{anim}.js'))
+  if request.path.startswith('/draw')
+    script(src=url_for('static', filename='js/bingo-burst.js'))
+  elif request.path.startswith('/idle')
+    script(src=url_for('static', filename='js/bingo-shift.js'))
   link(rel='stylesheet' href=url_for('static', filename='css/bingo.css'))
 
 block content
@@ -11,6 +14,7 @@ block content
         .squares
           each _ in range(49)
             .square
+        a#next(href=link hidden)
       .winner
         if winner
           p#name= winner.姓名

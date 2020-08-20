@@ -107,6 +107,11 @@ $(document).ready(function(){
     duration: 10000,
   });
 
+  var next = document.querySelector('#next').href;
+  square[24].onclick = () => {
+    window.location.href = next;
+  }
+
 });
 
 // vim: set ts=2 sw=2 et:
