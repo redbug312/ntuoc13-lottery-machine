@@ -1,32 +1,42 @@
 extends base
 
+block head
+  link(rel='stylesheet' href=url_for('static', filename='css/prepare.css'))
+
 block content
-  .ui.middle.aligned.one.column.grid.container
-    .column
-      .ui.grid
-        .sixteen.wide.column
-          h1.ui.center.aligned.grey.inverted.header 109 學年度開學典禮抽獎
-        .sixteen.wide.column
-          .ui.icon.message
+  .ui.middle.aligned.grid.container
+    .two.wide.column
+    .fourteen.wide.column
+      .ui.centered.grid
+        #title.sixteen.wide.column
+          h1.ui.center.aligned.header 109 學年度開學典禮抽獎
+        #alert.sixteen.wide.column
+          .ui.icon.huge.message
             i.hourglass.icon
             .content
-              .header 抽獎表單填寫截止時間為 9/6 (日)
+              .header 抽獎表單填寫截止時間為
                 .ui.transparent.input
-                  input(value='14:45')
+                  input(value='9/6 (日) 14:45')
               p (實際時間以開學典禮主持人當場公布為主)
           .ui.indicating.progress
             .bar
-        .five.wide.column
-          img#qrcode.ui.fluid.image(src=url_for('static', filename='assets/qrcode.png'))
-        .eleven.wide.column
-          .ui.segment
+        #qrcode.five.wide.column
+          img.ui.fluid.image(src=url_for('static', filename='assets/qrcode.png'))
+        #notice.eleven.wide.column
+          .ui.inverted.segment
             h2.ui.header
               i.info.circle.icon
               .content 注意事項
-            ul.ui.list
-              li 一位新生僅有一個抽獎資格
-              li 被抽中者需親自攜帶證件到場領獎
-              li 其他詳見課外組最新公告
+            ul.ui.huge.list
+              .item
+                i.right.triangle.icon
+                .content 一位新生僅有一個抽獎資格
+              .item
+                i.right.triangle.icon
+                .content 被抽中者本人須在典禮現場憑證件領獎
+              .item
+                i.right.triangle.icon
+                .content 其他詳見課外組最新公告
 
 
 // vim: set ts=2 sw=2 et:

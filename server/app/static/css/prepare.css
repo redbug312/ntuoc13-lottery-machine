@@ -1,0 +1,51 @@
+body {
+  /* background: url('../assets/background.svg') no-repeat center center fixed; */
+  background: #2F3655 url('../assets/background.png') no-repeat left center fixed;
+  background-size: auto 100vh;
+}
+
+body > .ui.grid.container {
+  height: 100vh;
+}
+
+#title > h1.ui.header {
+  font-size: 5rem;
+  font-family: 凝書體, 金萱;
+  font-weight: normal;
+  white-space: nowrap;
+  color: white;
+  margin: 4rem 0 !important;
+}
+
+#alert > .ui.message {
+  background-color: #EECD2F;
+}
+
+#alert > .ui.message input {
+  color: #832220;
+  font-weight: bold;
+}
+
+#alert > .ui.message > .content > .header {
+  font-size: 1.8em;
+  font-weight: normal;
+  white-space: nowrap;
+}
+
+#qrcode > img {
+  border: .4rem solid #EECD2F;
+  border-radius: 4%;
+}
+
+#notice > .ui.segment {
+  background-color: transparent !important;
+}
+
+#notice > .ui.segment > .header > .content,
+#notice > .ui.segment > .list > .item {
+  font-size: 1.2em;
+  white-space: nowrap;
+}
+
+
+/* vim: set ts=2 sw=2 et: */
