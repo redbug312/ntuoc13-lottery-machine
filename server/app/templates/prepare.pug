@@ -1,6 +1,7 @@
 extends base
 
 block head
+  script(src=url_for('static', filename='js/timer.js'))
   link(rel='stylesheet' href=url_for('static', filename='css/prepare.css'))
 
 block content
@@ -12,14 +13,15 @@ block content
           h1.ui.center.aligned.header 109 學年度開學典禮抽獎
         #alert.sixteen.wide.column
           .ui.icon.huge.message
-            i.hourglass.icon
+            i.hourglass.icon#timer-trigger
             .content
               .header 抽獎表單填寫截止時間為
                 .ui.transparent.input
                   input(value='9/6 (日) 14:45')
               p (實際時間以開學典禮主持人當場公布為主)
-          .ui.indicating.progress
+          .ui.inverted.green.progress#timer-progress
             .bar
+            .label 計時五分鐘
         #qrcode.five.wide.column
           img.ui.fluid.image(src=url_for('static', filename='assets/qrcode.png'))
         #notice.eleven.wide.column
