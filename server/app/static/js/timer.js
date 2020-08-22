@@ -28,6 +28,29 @@ $(document).ready(function(){
       label.innerHTML = '剩餘：' + mins + ' 分 ' + secs + ' 秒';
     }
   }, 0)
+  .add({
+    targets: '#timer-trigger',
+    keyframes: [
+      {rotateZ: 180, duration: 400},
+      {rotateZ: 0, duration: 0},
+    ],
+    duration: 400,
+    complete: () => {
+      trigger.classList.remove('end');
+      trigger.classList.add('start');
+    }
+  }, 0)
+  .add({
+    duration: timespan * 0.5,
+    begin: () => {
+      trigger.classList.remove('start');
+      trigger.classList.add('half');
+    },
+    complete: () => {
+      trigger.classList.remove('half');
+      trigger.classList.add('end');
+    },
+  }, timespan * 0.5);
 
   trigger.onclick = () => {
     timing.pause();
