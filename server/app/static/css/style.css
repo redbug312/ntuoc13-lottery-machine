@@ -1,11 +1,13 @@
 @import url(../font/cream/cream.css);
 @import url(../font/jinxuan/jinxuan.css);
 
-
-html {
+body {
   font-size: 16px;
   font-family: 文泉驛微米黑, sans-serif;
 }
 
+body > .ui.grid.container {
+  height: 100vh;
+}
 
 /* vim: set ts=2 sw=2 et: */

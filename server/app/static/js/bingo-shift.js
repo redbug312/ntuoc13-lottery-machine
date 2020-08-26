@@ -2,6 +2,7 @@ Array.prototype.sample = function(){
   return this[Math.floor(Math.random() * this.length)];
 };
 
+
 var ROWS = [
   [ 7,  8,  9, 10, 11, 12, 13],
   [14, 15, 16, 17, 18, 19, 20],
@@ -26,8 +27,8 @@ var DIRECTIONS = [
 
 $(document).ready(function(){
 
-  var canvas = document.querySelector('.canvas');
-  var square = document.querySelectorAll('.square');
+  var canvas = document.querySelector('#canvas');
+  var cubes = document.querySelectorAll('.cube');
 
   function animation() {
 
@@ -38,7 +39,7 @@ $(document).ready(function(){
     });
 
     DIRECTIONS.forEach(item => {
-      var line = item.lines.sample().map(i => square[i]);
+      var line = item.lines.sample().map(i => cubes[i]);
       shift
       .add({
         targets: line,
@@ -72,11 +73,10 @@ $(document).ready(function(){
 
   animation();
 
-  var next = document.querySelector('#next').href;
-  square[24].onclick = () => {
-    window.location.href = next;
+  cubes[24].onclick = () => {
+    var next_url = canvas.getAttribute('data-nexturl');
+    window.location.href = next_url;
   }
 });
-
 
 // vim: set ts=2 sw=2 et:

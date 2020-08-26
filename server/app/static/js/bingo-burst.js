@@ -2,6 +2,7 @@ Array.prototype.sample = function(){
   return this[Math.floor(Math.random() * this.length)];
 };
 
+
 var CENTRAL = [24];
 var SURROUNDS = [
    8,  9, 10, 11, 12,
@@ -25,14 +26,16 @@ var COLORS = [
   'rgba(244,152,27,.8)'
 ];
 
+
 $(document).ready(function(){
 
-  var canvas = document.querySelector('.canvas');
-  var square = document.querySelectorAll('.square');
+  var canvas = document.querySelector('#canvas');
+  var winner = document.querySelector('#winner');
+  var cubes = document.querySelectorAll('.cube');
 
-  var central = CENTRAL.map(i => square[i]);
-  var surrounds = SURROUNDS.map(i => square[i]);
-  var bingo = new Set(BINGOS.sample().map(i => square[i]));
+  var central = CENTRAL.map(i => cubes[i]);
+  var surrounds = SURROUNDS.map(i => cubes[i]);
+  var bingo = new Set(BINGOS.sample().map(i => cubes[i]));
 
   /* saturate */
 
@@ -70,7 +73,7 @@ $(document).ready(function(){
     autoplay: false,
     easing: 'easeInOutCubic',
   })
-  .add({  // Rotate and scatter surrounding squares
+  .add({  // Rotate and scatter surrounding cubes
     targets: surrounds,
     opacity: .3,
     translateX: () => anime.random(-8, 8) * 2.5 + 'rem',
@@ -78,7 +81,7 @@ $(document).ready(function(){
     delay: 400,
     duration: 800,
   })
-  .add({  // Scale up central square
+  .add({  // Scale up central cube
     targets: central,
     opacity: .5,
     scale: 6,
@@ -88,7 +91,7 @@ $(document).ready(function(){
     complete: () => rotate.play(),
   }, '-=800')
   .add({  // Fade in winner name
-    targets: 'article#bingo .winner',
+    targets: winner,
     opacity: [0, 1],
     duration: 800,
   });
@@ -113,7 +116,7 @@ $(document).ready(function(){
 
   /* rectify */
 
-  square[24].onclick = () => {
+  cubes[24].onclick = () => {
     var degree = anime.get(central[0], 'rotateZ', 'deg');
     degree = parseInt(degree, 10);
 
@@ -137,8 +140,8 @@ $(document).ready(function(){
       });
       return saturate.children[0].finished;
     }).then(() => {
-      var link = document.querySelector('#next').href;
-      window.location.href = link;
+      var next_url = canvas.getAttribute('data-nexturl');
+      window.location.href = next_url;
     });
   }
 
