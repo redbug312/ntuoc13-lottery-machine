@@ -34,12 +34,12 @@ $(document).ready(function(){
   var surrounds = SURROUNDS.map(i => square[i]);
   var bingo = new Set(BINGOS.sample().map(i => square[i]));
 
-  /* burst */
+  /* saturate */
 
-  var burst = anime.timeline({
+  var saturate = anime.timeline({
     // autoplay: false,
     easing: 'easeInOutCubic',
-    // begin: () => canvas.style.overflow = 'visible',
+    // complete: () => burst.play(),  // lazy evaluate
   })
   .add({  // Highlight central border-color
     targets: central,
@@ -47,10 +47,9 @@ $(document).ready(function(){
     duration: 1000,
   })
 
-  console.log(bingo);
   surrounds.forEach(item => {
     var color = COLORS.sample();
-    burst
+    saturate
     .add({  // Highlight surrounding border-color
       targets: item,
       borderColor: () => ['rgba(100,100,100,.8)', color],
@@ -65,7 +64,12 @@ $(document).ready(function(){
     }, 1000)
   });
 
-  burst
+  /* burst */
+
+  var burst = anime.timeline({
+    autoplay: false,
+    easing: 'easeInOutCubic',
+  })
   .add({  // Rotate and scatter surrounding squares
     targets: surrounds,
     opacity: .3,
@@ -81,22 +85,22 @@ $(document).ready(function(){
     borderWidth: [4/16 + 'rem', 1/16 + 'rem'],
     boxShadow: '0 0 0 0',
     duration: 800,
-    complete: () => last.play(),
+    complete: () => rotate.play(),
   }, '-=800')
   .add({  // Fade in winner name
     targets: 'article#bingo .winner',
     opacity: [0, 1],
-    // easing: 'easeInOutCubic',
     duration: 800,
   });
 
-  /* last */
+  // Avoid trigger complete() in reverse animation
+  saturate.finished.then(burst.play);
 
-  var last = anime.timeline({
+  /* rotate */
+
+  var rotate = anime({
     autoplay: false,
     loop: true,
-  })
-  .add({  // Keep rotating central square
     targets: central,
     keyframes: [
       {scale: 1, duration: 1},
@@ -107,9 +111,35 @@ $(document).ready(function(){
     duration: 10000,
   });
 
-  var next = document.querySelector('#next').href;
+  /* rectify */
+
   square[24].onclick = () => {
-    window.location.href = next;
+    var degree = anime.get(central[0], 'rotateZ', 'deg');
+    degree = parseInt(degree, 10);
+
+    var rectify = anime({
+      targets: central,
+      rotateZ: [degree, degree - degree % 90],
+      duration: 400 * (degree % 90) / 90,
+      easing: 'easeInCubic',
+      begin: () => rotate.pause(),
+    });
+
+    rectify.finished.then(() => {
+      burst.reverse();
+      burst.play();
+      return burst.finished;
+    }).then(() => {
+      saturate.children.forEach(sub => {
+        sub.delay = 0;
+        sub.reverse();
+        sub.play();
+      });
+      return saturate.children[0].finished;
+    }).then(() => {
+      var link = document.querySelector('#next').href;
+      window.location.href = link;
+    });
   }
 
 });
