@@ -1,11 +1,3 @@
-@import url(../font/cream/cream.css);
-@import url(../font/jinxuan/jinxuan.css);
-
-
-html {
-  font-size: 16px;
-}
-
 body {
   color: rgba(100,100,100,.8);
   background-color: rgba(253,241,217,1);
