@@ -1,11 +1,11 @@
 extends base
 
 block head
-  if request.path.startswith('/draw')
+  if request.path.startswith('/lottery/draw')
     script(src=url_for('static', filename='js/bingo-burst.js'))
-  elif request.path.startswith('/idle')
+  elif request.path.startswith('/lottery/idle')
     script(src=url_for('static', filename='js/bingo-shift.js'))
-  link(rel='stylesheet' href=url_for('static', filename='css/bingo.css'))
+  link(rel='stylesheet' href=url_for('static', filename='css/lottery.css'))
 
 block content
   section
