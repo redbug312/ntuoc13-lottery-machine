@@ -1,81 +1,56 @@
-body {
-  color: rgba(100,100,100,.8);
-  background-color: rgba(253,241,217,1);
+#canvas {
+  width:  calc(4rem * 5 + 1rem * 4 + 1.5rem);
+  height: calc(4rem * 5 + 1rem * 4 + 1.5rem);
+  margin: 0 auto;
+  /* border: 1px solid black  /1* test alignment *1/ */
 }
 
-section {
-  margin: 50vh 50vw;
-  position: fixed;
-  transform: translate(-50%, -50%);
-}
-
-article#bingo {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-article#bingo .canvas {
-  /* border: .1rem solid #000; */
-  /* overflow: hidden; */
-  width:  calc(4rem * 5 + 1rem * 4 + 1.6rem);
-  height: calc(4rem * 5 + 1rem * 4 + 1.6rem);
-}
-
-article#bingo .canvas .squares {
+#canvas .cubes {
+  margin: 0;
   display: grid;
   grid-gap: 1rem;
   grid-template: repeat(7, 1fr) / repeat(7, 1fr);
-  transform: translate(-4.2rem, -4.2rem);
+  transform: translate(-4.25rem, -4.25rem);
 }
 
-article#bingo .canvas .square {
+#canvas .cube {
   width:  4rem;
   height: 4rem;
-  border: .25rem solid rgba(34,36,38,.5);
+  border: .25rem solid RGBA(34,36,38,.5);
   border-radius: 4%;
-  box-shadow: 0 1px 2px 0 rgba(34,36,38,.3);
-  mix-blend-mode: lighten;
+  mix-blend-mode: lignten;
 }
 
-article#bingo .canvas .square:nth-child(25):hover {
+#canvas .cube:nth-child(25):hover {
   cursor: pointer;
 }
 
-article#bingo .canvas .square:nth-child(n+43),
-article#bingo .canvas .square:nth-child(-n+7),
-article#bingo .canvas .square:nth-child(7n+1),
-article#bingo .canvas .square:nth-child(7n+7) {
+#canvas .cube:nth-child(n+43),
+#canvas .cube:nth-child(-n+7),
+#canvas .cube:nth-child(7n+1),
+#canvas .cube:nth-child(7n+7) {
   opacity: 0;
 }
 
-article#bingo .winner {
-  font-family: 凝書體, 金萱;
-  text-align: center;
-  margin: 0 auto;
-  height: 0;
+#winner {
   opacity: 0;
+  height: 0;  /* avoid interfering middle-aligned */
+  transform: translateY(6rem);
   white-space: nowrap;
-  transform: translateY(-14rem);
-  text-shadow:
-     4px  0px 2px rgba(253,241,217,1),
-    -4px  0px 2px rgba(253,241,217,1),
-     0px  4px 2px rgba(253,241,217,1),
-     0px -4px 2px rgba(253,241,217,1);
-     2px  2px 2px rgba(253,241,217,1),
-    -2px -2px 2px rgba(253,241,217,1),
-     2px -2px 2px rgba(253,241,217,1),
-    -2px  2px 2px rgba(253,241,217,1);
+  z-index: 1;
 }
 
-article#bingo .winner p#name {
+#winner .header {
+  font-family: 凝書體, 金萱;
   font-size: 8em;
-  margin: -.8em 0 -.2em;
+  font-weight: normal;
 }
 
-article#bingo .winner p#id {
-  font-size: 3em;
+#winner .sub.header {
+  font-family: 凝書體, 金萱;
+  font-size: .4em;
   font-weight: bold;
+  margin-top: -0.2em;
 }
 
 // vim: set ts=2 sw=2 et:

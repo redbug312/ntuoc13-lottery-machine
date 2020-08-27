@@ -4,15 +4,17 @@ import random
 from ..models import db
 
 
-lottery = Blueprint('lottery', __name__)
+bonus = Blueprint('bonus', __name__)
 
 
-@lottery.route('/lottery/draw/<role>')
-def draw(role):
-    prefixes = {'undergrad': 'B', 'grad': 'RD'}
-    if role not in prefixes.keys():
-        return abort(404)  # Invalid role found
+@bonus.route('/bonus/fifty')
+def fifty():
+    winners = ['redbug312'] * 50
+    return render_template('fifty.pug', winners=winners)
 
+
+@bonus.route('/bonus/draw')
+def draw():
     try:
         i = request.args.get('i', default=0, type=int)
         seed = request.args.get('seed', type=int)
@@ -20,21 +22,20 @@ def draw(role):
         return abort(401)  # When argument failed casting
     if not seed:
         seed = random.randint(100000, 999999)
-        return redirect(url_for('.draw', role=role, i=0, seed=seed))
+        return redirect(url_for('.draw', i=0, seed=seed))
 
-    prefix = prefixes[role]
-    winners = db.draw(n=3, seed=seed, prefix=prefix)
+    winners = db.draw(n=3, seed=seed, prefix='BRD')
     if winners.empty:
         return abort(404)  # When no one can be drawn
     elif i >= winners.shape[0]:
-        return redirect(url_for('.draw', role=role))
+        return redirect(url_for('.draw'))
 
-    link = url_for('.draw', role=role, i=(i + 1), seed=seed)
+    link = url_for('.draw', i=(i + 1), seed=seed)
     winner = winners.iloc[i].to_dict()
     return render_template('bingo.pug', link=link, winner=winner)
 
 
-@lottery.route('/lottery/idle/<role>')
-def idle(role):
-    link = url_for('.draw', role=role)
+@bonus.route('/bonus/idle')
+def idle():
+    link = url_for('.draw')
     return render_template('bingo.pug', link=link)

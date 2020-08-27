@@ -1,0 +1,26 @@
+html:before {
+  background-image: linear-gradient(to top, #fdcbf1 1%, #e6dee9 100%);
+  opacity: .5;
+}
+
+#canvas .cube.color1 {
+  border-color: RGBA(215,96,96,.8);  /* pink */
+}
+
+#canvas .cube.color2 {
+  border-color: RGBA(123,141,141,.8);  /* aqua */
+}
+
+#winner {
+  text-shadow:
+     4px  0px 2px RGBA(249,249,251,1),
+    -4px  0px 2px RGBA(249,249,251,1),
+     0px  4px 2px RGBA(249,249,251,1),
+     0px -4px 2px RGBA(249,249,251,1);
+     2px  2px 2px RGBA(249,249,251,1),
+    -2px -2px 2px RGBA(249,249,251,1),
+     2px -2px 2px RGBA(249,249,251,1),
+    -2px  2px 2px RGBA(249,249,251,1);
+}
+
+// vim: set ts=2 sw=2 et:

@@ -1,10 +1,10 @@
-from flask import Flask, render_template, abort
+from flask import Flask, render_template
 from werkzeug.exceptions import HTTPException
 
 from .models import db
 from .views.api import api
 from .views.lottery import lottery
-from .views.prepare import prepare
+from .views.bonus import bonus
 
 
 app = Flask(__name__, template_folder='templates')
@@ -12,12 +12,12 @@ app.jinja_env.add_extension('pypugjs.ext.jinja.PyPugJSExtension')
 app.config.from_pyfile('instance/default.py')
 app.register_blueprint(api)
 app.register_blueprint(lottery)
-app.register_blueprint(prepare)
+app.register_blueprint(bonus)
 
 
 @app.route('/')
 def index():
-    return abort(401)
+    return render_template('index.pug')
 
 
 @app.errorhandler(HTTPException)

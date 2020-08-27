@@ -1,0 +1,25 @@
+extends base
+
+block head
+  script(src=url_for('static', filename='js/fifty.js'))
+  link(rel='stylesheet' href=url_for('static', filename='css/fifty.css'))
+
+block content
+  article#icons
+    .ui.center.aligned.basic.segment
+      .ui.massive.basic.icon.buttons
+        button.ui.button#trigger
+          i.heart.outline.icon
+          span(hidden) next
+        button.ui.button
+          i.comment.outline.icon
+        button.ui.button
+          i.paper.plane.outline.icon
+  article#winners
+    .ui.basic.segment
+      for winner in winners
+        .ui.huge.basic.label
+          i.at.icon
+          span= winner
+
+// vim: set ts=2 sw=2 et:
