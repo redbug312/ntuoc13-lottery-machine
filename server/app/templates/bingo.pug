@@ -2,13 +2,14 @@ extends base
 
 block head
   if '/draw' in request.path
-    script(src=url_for('static', filename='js/bingo-burst.js'))
+    script(src=url_for('static', filename='js/bingo/burst.js'))
   elif '/idle' in request.path
-    script(src=url_for('static', filename='js/bingo-shift.js'))
+    script(src=url_for('static', filename='js/bingo/shift.js'))
   if request.path.startswith('/lottery')
-    link(rel='stylesheet' href=url_for('static', filename='css/lottery.css'))
+    link(rel='stylesheet' href=url_for('static', filename='css/themes/lottery.css'))
   elif request.path.startswith('/bonus')
     link(rel='stylesheet' href=url_for('static', filename='css/themes/bonus.css'))
+  link(rel='stylesheet' href=url_for('static', filename='css/bingo.css'))
 
 block content
   article#winner

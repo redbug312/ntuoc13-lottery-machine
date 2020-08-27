@@ -1,32 +1,6 @@
 html:before {
-background-image: linear-gradient(to top, #dbdcd7 0%, #dddcd7 24%, #e2c9cc 30%, #e7627d 46%, #b8235a 59%, #801357 71%, #3d1635 84%, #1c1a27 100%);
-background-image: linear-gradient(to top, #d5dee7 0%, #ffafbd 0%, #c9ffbf 100%);
-background-image: linear-gradient(120deg, #E3FDF5 0%, #FFE6FA 100%);
-/* background-image: linear-gradient(to top, #feada6 0%, #f5efef 100%); */
-  opacity: .6;
-}
-
-#canvas {
-  width:  calc(4rem * 5 + 1rem * 4 + 1.5rem);
-  height: calc(4rem * 5 + 1rem * 4 + 1.5rem);
-  margin: 0 auto;
-  /* border: 1px solid black  /1* test alignment *1/ */
-}
-
-#canvas .cubes {
-  margin: 0;
-  display: grid;
-  grid-gap: 1rem;
-  grid-template: repeat(7, 1fr) / repeat(7, 1fr);
-  transform: translate(-4.25rem, -4.25rem);
-}
-
-#canvas .cube {
-  width:  4rem;
-  height: 4rem;
-  border: .25rem solid RGBA(34,36,38,.5);
-  border-radius: 4%;
-  mix-blend-mode: lignten;
+  background-image: linear-gradient(to top, #fdcbf1 1%, #e6dee9 100%);
+  opacity: .5;
 }
 
 #canvas .cube.color1 {
@@ -37,23 +11,7 @@ background-image: linear-gradient(120deg, #E3FDF5 0%, #FFE6FA 100%);
   border-color: RGBA(123,141,141,.8);  /* aqua */
 }
 
-#canvas .cube:nth-child(25):hover {
-  cursor: pointer;
-}
-
-#canvas .cube:nth-child(n+43),
-#canvas .cube:nth-child(-n+7),
-#canvas .cube:nth-child(7n+1),
-#canvas .cube:nth-child(7n+7) {
-  opacity: 0;
-}
-
 #winner {
-  opacity: 0;
-  height: 0;  /* avoid interfering middle-aligned */
-  transform: translateY(6rem);
-  white-space: nowrap;
-  z-index: 1;
   text-shadow:
      4px  0px 2px RGBA(249,249,251,1),
     -4px  0px 2px RGBA(249,249,251,1),
@@ -63,19 +21,6 @@ background-image: linear-gradient(120deg, #E3FDF5 0%, #FFE6FA 100%);
     -2px -2px 2px RGBA(249,249,251,1),
      2px -2px 2px RGBA(249,249,251,1),
     -2px  2px 2px RGBA(249,249,251,1);
-}
-
-#winner .header {
-  font-family: 凝書體, 金萱;
-  font-size: 8em;
-  font-weight: normal;
-}
-
-#winner .sub.header {
-  font-family: 凝書體, 金萱;
-  font-size: .4em;
-  font-weight: bold;
-  margin-top: -0.2em;
 }
 
 // vim: set ts=2 sw=2 et:

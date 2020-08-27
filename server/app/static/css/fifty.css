@@ -1,6 +1,6 @@
 html:before {
   background-image: linear-gradient(to top, #fdcbf1 1%, #e6dee9 100%);
-  opacity: .7;
+  opacity: .5;
 }
 
 #winners {

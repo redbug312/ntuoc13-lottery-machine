@@ -29,6 +29,7 @@ $(document).ready(function(){
   var winner = document.querySelector('#winner');
   var cubes = document.querySelectorAll('#canvas .cube');
 
+  var origin_color = anime.get(cubes[0], 'border-top-color');
   var colors = [
     anime.get(document.querySelector('#canvas .cube.color1'), 'border-top-color'),
     anime.get(document.querySelector('#canvas .cube.color2'), 'border-top-color'),
@@ -47,7 +48,7 @@ $(document).ready(function(){
   })
   .add({  // Highlight central border-color
     targets: central,
-    borderColor: () => ['rgba(100,100,100,.8)', colors.sample()],
+    borderColor: () => [origin_color, colors.sample()],
     duration: 1000,
   })
 
@@ -56,7 +57,7 @@ $(document).ready(function(){
     saturate
     .add({  // Highlight surrounding border-color
       targets: item,
-      borderColor: () => ['rgba(100,100,100,.8)', color],
+      borderColor: () => [origin_color, color],
       duration: 1000,
     }, 0)
     .add({  // Highlight surrounding background-color

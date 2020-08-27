@@ -37,5 +37,5 @@ def draw():
 
 @bonus.route('/bonus/idle')
 def idle():
-    link = url_for('.fifty')
+    link = url_for('.draw')
     return render_template('bingo.pug', link=link)

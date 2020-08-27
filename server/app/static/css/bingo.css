@@ -1,8 +1,3 @@
-html:before {
-  background-image: linear-gradient(120deg, #f6d365 0%, #fcb985 100%);
-  opacity: .2;
-}
-
 #canvas {
   width:  calc(4rem * 5 + 1rem * 4 + 1.5rem);
   height: calc(4rem * 5 + 1rem * 4 + 1.5rem);
@@ -21,17 +16,9 @@ html:before {
 #canvas .cube {
   width:  4rem;
   height: 4rem;
-  border: .25rem solid rgba(34,36,38,.5);
+  border: .25rem solid RGBA(34,36,38,.5);
   border-radius: 4%;
   mix-blend-mode: lignten;
-}
-
-#canvas .cube.color1 {
-  border-color: RGBA(62,65,92,.8);  /* blue */
-}
-
-#canvas .cube.color2 {
-  border-color: RGBA(244,152,27,.8);  /* orange */
 }
 
 #canvas .cube:nth-child(25):hover {
@@ -51,15 +38,6 @@ html:before {
   transform: translateY(6rem);
   white-space: nowrap;
   z-index: 1;
-  text-shadow:
-     4px  0px 2px rgba(253,241,217,1),
-    -4px  0px 2px rgba(253,241,217,1),
-     0px  4px 2px rgba(253,241,217,1),
-     0px -4px 2px rgba(253,241,217,1);
-     2px  2px 2px rgba(253,241,217,1),
-    -2px -2px 2px rgba(253,241,217,1),
-     2px -2px 2px rgba(253,241,217,1),
-    -2px  2px 2px rgba(253,241,217,1);
 }
 
 #winner .header {
