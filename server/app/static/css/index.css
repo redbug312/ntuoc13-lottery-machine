@@ -1,4 +1,4 @@
-body {
+html:before {
   background: #2F3655 url('../assets/background.png') no-repeat left center fixed;
   background-size: auto 100vh;
 }
