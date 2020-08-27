@@ -1,11 +1,14 @@
 extends base
 
 block head
-  if request.path.startswith('/lottery/draw')
+  if '/draw' in request.path
     script(src=url_for('static', filename='js/bingo-burst.js'))
-  elif request.path.startswith('/lottery/idle')
+  elif '/idle' in request.path
     script(src=url_for('static', filename='js/bingo-shift.js'))
-  link(rel='stylesheet' href=url_for('static', filename='css/lottery.css'))
+  if request.path.startswith('/lottery')
+    link(rel='stylesheet' href=url_for('static', filename='css/lottery.css'))
+  elif request.path.startswith('/bonus')
+    link(rel='stylesheet' href=url_for('static', filename='css/themes/bonus.css'))
 
 block content
   article#winner
@@ -17,5 +20,7 @@ block content
     .ui.seven.column.grid.cubes
       each _ in range(49)
         .column.cube
+    .cube.color1(hidden)  // for js to fetch css colors
+    .cube.color2(hidden)
 
 // vim: set ts=2 sw=2 et:

@@ -21,17 +21,18 @@ var BINGOS = [
   [11, 18, 25, 32, 39],
   [12, 19, 26, 33, 40],
 ];
-var COLORS = [
-  'rgba(62,65,92,.8)',
-  'rgba(244,152,27,.8)'
-];
 
 
 $(document).ready(function(){
 
   var canvas = document.querySelector('#canvas');
   var winner = document.querySelector('#winner');
-  var cubes = document.querySelectorAll('.cube');
+  var cubes = document.querySelectorAll('#canvas .cube');
+
+  var colors = [
+    anime.get(document.querySelector('#canvas .cube.color1'), 'border-top-color'),
+    anime.get(document.querySelector('#canvas .cube.color2'), 'border-top-color'),
+  ];
 
   var central = CENTRAL.map(i => cubes[i]);
   var surrounds = SURROUNDS.map(i => cubes[i]);
@@ -46,12 +47,12 @@ $(document).ready(function(){
   })
   .add({  // Highlight central border-color
     targets: central,
-    borderColor: () => ['rgba(100,100,100,.8)', COLORS.sample()],
+    borderColor: () => ['rgba(100,100,100,.8)', colors.sample()],
     duration: 1000,
   })
 
   surrounds.forEach(item => {
-    var color = COLORS.sample();
+    var color = colors.sample();
     saturate
     .add({  // Highlight surrounding border-color
       targets: item,

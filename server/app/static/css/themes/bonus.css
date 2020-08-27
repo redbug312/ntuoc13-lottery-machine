@@ -1,6 +1,9 @@
 html:before {
-  background-image: linear-gradient(120deg, #f6d365 0%, #fcb985 100%);
-  opacity: .2;
+background-image: linear-gradient(to top, #dbdcd7 0%, #dddcd7 24%, #e2c9cc 30%, #e7627d 46%, #b8235a 59%, #801357 71%, #3d1635 84%, #1c1a27 100%);
+background-image: linear-gradient(to top, #d5dee7 0%, #ffafbd 0%, #c9ffbf 100%);
+background-image: linear-gradient(120deg, #E3FDF5 0%, #FFE6FA 100%);
+/* background-image: linear-gradient(to top, #feada6 0%, #f5efef 100%); */
+  opacity: .6;
 }
 
 #canvas {
@@ -21,17 +24,17 @@ html:before {
 #canvas .cube {
   width:  4rem;
   height: 4rem;
-  border: .25rem solid rgba(34,36,38,.5);
+  border: .25rem solid RGBA(34,36,38,.5);
   border-radius: 4%;
   mix-blend-mode: lignten;
 }
 
 #canvas .cube.color1 {
-  border-color: RGBA(62,65,92,.8);  /* blue */
+  border-color: RGBA(215,96,96,.8);  /* pink */
 }
 
 #canvas .cube.color2 {
-  border-color: RGBA(244,152,27,.8);  /* orange */
+  border-color: RGBA(123,141,141,.8);  /* aqua */
 }
 
 #canvas .cube:nth-child(25):hover {
@@ -52,14 +55,14 @@ html:before {
   white-space: nowrap;
   z-index: 1;
   text-shadow:
-     4px  0px 2px rgba(253,241,217,1),
-    -4px  0px 2px rgba(253,241,217,1),
-     0px  4px 2px rgba(253,241,217,1),
-     0px -4px 2px rgba(253,241,217,1);
-     2px  2px 2px rgba(253,241,217,1),
-    -2px -2px 2px rgba(253,241,217,1),
-     2px -2px 2px rgba(253,241,217,1),
-    -2px  2px 2px rgba(253,241,217,1);
+     4px  0px 2px RGBA(249,249,251,1),
+    -4px  0px 2px RGBA(249,249,251,1),
+     0px  4px 2px RGBA(249,249,251,1),
+     0px -4px 2px RGBA(249,249,251,1);
+     2px  2px 2px RGBA(249,249,251,1),
+    -2px -2px 2px RGBA(249,249,251,1),
+     2px -2px 2px RGBA(249,249,251,1),
+    -2px  2px 2px RGBA(249,249,251,1);
 }
 
 #winner .header {

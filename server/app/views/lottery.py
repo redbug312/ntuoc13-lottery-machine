@@ -1,4 +1,4 @@
-from flask import Blueprint, request, render_template, abort, redirect, url_for
+from flask import Blueprint, render_template, url_for, request, abort, redirect
 import random
 
 from ..models import db
