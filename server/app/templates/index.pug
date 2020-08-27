@@ -5,39 +5,43 @@ block head
   link(rel='stylesheet' href=url_for('static', filename='css/index.css'))
 
 block content
-  .ui.middle.aligned.grid.container
+  .ui.grid
     .two.wide.column
     .fourteen.wide.column
-      .ui.centered.grid
-        #title.sixteen.wide.column
-          h1.ui.center.aligned.header 109 學年度開學典禮抽獎
-        #alert.sixteen.wide.column
-          .ui.icon.huge.message
-            i.hourglass.end.icon#timer-trigger
-            .content
-              .header 抽獎表單填寫截止時間為
-                .ui.transparent.input
-                  input(value='9/6 (日) 14:45' autocomplete='off')
-              p (實際時間以開學典禮主持人當場公布為主)
-          .ui.inverted.green.progress#timer-progress
-            .bar
-            .label 計時五分鐘
-        #qrcode.five.wide.column
-          img.ui.fluid.image(src=url_for('static', filename='assets/qrcode.png'))
-        #notice.eleven.wide.column
-          .ui.inverted.segment
-            h2.ui.header
-              i.info.circle.icon
-              .content 注意事項
-            ul.ui.huge.list
-              .item
-                i.right.triangle.icon
-                .content 一位新生僅有一個抽獎資格
-              .item
-                i.right.triangle.icon
-                .content 被抽中者本人須在典禮現場憑證件領獎
-              .item
-                i.right.triangle.icon
-                .content 其他詳見課外組最新公告
+      article#title
+        h1.ui.center.aligned.header 109 學年度開學典禮抽獎
+    .two.wide.column
+    .fourteen.wide.column
+      article#alert
+        .ui.icon.huge.message
+          i.hourglass.end.icon#timer-trigger
+          .content
+            .header 抽獎表單填寫截止時間為
+              .ui.transparent.input
+                input(value='9/6 (日) 14:45' autocomplete='off')
+            p (實際時間以開學典禮主持人當場公布為主)
+        .ui.inverted.green.progress#timer-progress
+          .bar
+          .label 計時五分鐘
+    .two.wide.column
+    .four.wide.column
+      article#qrcode
+        img.ui.fluid.image(src=url_for('static', filename='assets/qrcode.png'))
+    .ten.wide.column
+      article#notice
+        .ui.inverted.segment
+          h2.ui.header
+            i.info.circle.icon
+            .content 注意事項
+          ul.ui.huge.list
+            .item
+              i.right.triangle.icon
+              .content 一位新生僅有一個抽獎資格
+            .item
+              i.right.triangle.icon
+              .content 被抽中者本人須在典禮現場憑證件領獎
+            .item
+              i.right.triangle.icon
+              .content 其他詳見課外組最新公告
 
 // vim: set ts=2 sw=2 et:

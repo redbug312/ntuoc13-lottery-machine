@@ -8,15 +8,14 @@ block head
   link(rel='stylesheet' href=url_for('static', filename='css/lottery.css'))
 
 block content
-  .ui.middle.aligned.grid.container
-    .sixteen.wide.column
-      #winner
-        if winner
-          .ui.center.aligned.grey.header= winner.姓名
-            .sub.header= winner.學號
-      #canvas(data-nexturl=link)
-        .ui.seven.column.grid.cubes
-          each _ in range(49)
-            .column.cube
+  article#winner
+    if winner
+      .ui.center.aligned.grey.header= winner.姓名
+        .sub.header= winner.學號
+  article#canvas(data-nexturl=link)
+    a(href=link hidden) next
+    .ui.seven.column.grid.cubes
+      each _ in range(49)
+        .column.cube
 
 // vim: set ts=2 sw=2 et:

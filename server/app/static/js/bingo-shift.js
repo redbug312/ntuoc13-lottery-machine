@@ -38,6 +38,8 @@ $(document).ready(function(){
       begin: () => canvas.style.overflow = 'hidden',
     });
 
+    shift.finished.then(animation);
+
     DIRECTIONS.forEach(item => {
       var line = item.lines.sample().map(i => cubes[i]);
       shift
@@ -68,7 +70,6 @@ $(document).ready(function(){
       }, '-=1000')
     })
 
-    shift.finished.then(animation);
   }
 
   animation();
@@ -77,6 +78,7 @@ $(document).ready(function(){
     var next_url = canvas.getAttribute('data-nexturl');
     window.location.href = next_url;
   }
+
 });
 
 // vim: set ts=2 sw=2 et:
