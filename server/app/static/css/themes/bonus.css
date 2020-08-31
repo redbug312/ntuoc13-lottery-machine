@@ -1,5 +1,6 @@
 html:before {
-  background-image: linear-gradient(to top, #fdcbf1 1%, #e6dee9 100%);
+  /* background-image: linear-gradient(to top, #fdcbf1 1%, #e6dee9 100%); */
+  background-image: linear-gradient(-225deg, #E3FDF5 0%, #FFE6FA 100%);
   opacity: .5;
 }
 
