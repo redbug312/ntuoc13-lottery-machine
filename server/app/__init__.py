@@ -5,6 +5,7 @@ from .models import db, ig
 from .views.api import api
 from .views.lottery import lottery
 from .views.bonus import bonus
+from .views.fifty import fifty
 
 
 app = Flask(__name__, template_folder='templates')
@@ -13,6 +14,7 @@ app.config.from_pyfile('instance/default.py')
 app.register_blueprint(api)
 app.register_blueprint(lottery)
 app.register_blueprint(bonus)
+app.register_blueprint(fifty)
 
 
 @app.route('/')

@@ -7,12 +7,6 @@ from ..models import db
 bonus = Blueprint('bonus', __name__)
 
 
-@bonus.route('/bonus/fifty')
-def fifty():
-    winners = ['redbug312'] * 50
-    return render_template('fifty.pug', winners=winners)
-
-
 @bonus.route('/bonus/draw')
 def draw():
     try:
