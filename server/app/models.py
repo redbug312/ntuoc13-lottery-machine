@@ -35,4 +35,17 @@ class Attendees():
         return self.df[boolmask]
 
 
+class Instagramers():
+    def init_app(self, app):
+        self.df = pd.read_csv(app.config['INSTAGRAM_CSV'], header=None)
+
+    def draw(self, n=1, seed=None):
+        n = min(n, self.df.shape[0])
+        return self.df[0].sample(n=n, random_state=seed)
+
+    def lookup(self):
+        return self.df[0]
+
+
 db = Attendees()
+ig = Instagramers()

@@ -1,7 +1,7 @@
 from flask import Flask, render_template
 from werkzeug.exceptions import HTTPException
 
-from .models import db
+from .models import db, ig
 from .views.api import api
 from .views.lottery import lottery
 from .views.bonus import bonus
@@ -29,3 +29,4 @@ def handle_exception(error):
 @app.before_first_request
 def init():
     db.init_app(app)
+    ig.init_app(app)
