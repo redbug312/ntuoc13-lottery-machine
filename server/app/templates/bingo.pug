@@ -13,9 +13,9 @@ block head
 
 block content
   article#winner
-    if winner
-      .ui.center.aligned.grey.header= winner.姓名
-        .sub.header= winner.學號
+    if name
+      .ui.center.aligned.header= name
+        .sub.header= desc
   article#canvas(data-nexturl=link)
     a(href=link hidden) next
     .ui.seven.column.grid.cubes

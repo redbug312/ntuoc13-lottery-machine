@@ -13,21 +13,28 @@ def db_draw():
         n = request.args.get('n', default=3, type=int)
         seed = request.args.get('seed', type=int)
         prefix = request.args.get('prefix', default='B')
+        instagram = request.args.get('instagram', default=False, type=bool)
     except ValueError:
         return abort(401)  # When argument failed casting
     if not seed:
         rand = random.randint(100000, 999999)
-        return redirect(url_for('.db_draw', n=n, seed=rand, prefix=prefix))
+        return redirect(url_for('.db_draw', seed=rand, **request.args))
 
-    result = db.draw(n=n, seed=seed, prefix=prefix) \
-               .to_dict(orient='records')
+    result = (db.draw(n=n, seed=seed, prefix=prefix, instagram=instagram)
+                .to_dict(orient='records'))
     return jsonify(result)
 
 
 @api.route('/api/db/lookup')
 def db_lookup():
-    prefix = request.args.get('prefix', default='BRD')
-    result = db.lookup(prefix=prefix).to_dict(orient='records')
+    try:
+        prefix = request.args.get('prefix', default='BRD')
+        instagram = request.args.get('instagram', default=False, type=bool)
+    except ValueError:
+        return abort(401)  # When argument failed casting
+
+    result = (db.lookup(prefix=prefix, instagram=instagram)
+                .to_dict(orient='records'))
     return jsonify(result)
 
 
