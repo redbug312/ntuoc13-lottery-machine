@@ -13,23 +13,25 @@ class Attendees():
                      .fillna({'TEAM': 0, 'INST': ''}))
         self.universe = self.df.TEAM.notnull()
 
-    def draw(self, n=1, seed=None, prefix=None):
-        lookup = self.lookup(prefix=prefix)
+    def draw(self, n=1, seed=None, prefix=None, instagram=False):
+        lookup = self.lookup(prefix=prefix, instagram=instagram)
         groupby = lookup.groupby(by='TEAM')
         weights = groupby.size().values  # Index always be sorted in ascending order
         try:
-            return groupby.sample(n=1, random_state=seed) \
-                          .sample(n=n, random_state=seed, weights=weights)
+            return (groupby.sample(n=1, random_state=seed)
+                           .sample(n=n, random_state=seed, weights=weights))
         except ValueError:
             n = min(n, lookup.shape[0])
             return lookup.sample(n=n, random_state=seed)
 
-    def lookup(self, card=None, prefix=None):
+    def lookup(self, card=None, prefix=None, instagram=False):
         boolmask = self.universe
-        boolmask &= (self.df.STID.str.contains('^[%s]' % prefix) if prefix
-                     else self.universe)
-        boolmask &= (self.df.STID == card.upper() if card
-                     else self.universe)
+        if card:
+            boolmask &= self.df.STID.eq(card.upper())
+        if prefix:
+            boolmask &= self.df.STID.str.contains('^[%s]' % prefix)
+        if instagram:
+            boolmask &= self.df.INST.ne('')
         return self.df[boolmask]
 
 
