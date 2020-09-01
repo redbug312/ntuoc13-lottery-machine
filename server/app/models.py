@@ -25,7 +25,7 @@ class Attendees():
             return lookup.sample(n=n, random_state=seed)
 
     def lookup(self, card=None, prefix=None, instagram=False):
-        boolmask = self.universe
+        boolmask = self.universe.copy()  # Avoid passing dataframe ref
         if card:
             boolmask &= self.df.STID.eq(card.upper())
         if prefix:
