@@ -1,11 +1,14 @@
 extends base
 
 block head
-  script(src=url_for('static', filename='js/fifty.js'))
+  if '/draw' in request.path
+    script(src=url_for('static', filename='js/fifty-draw.js'))
+  elif '/idle' in request.path
+    script(src=url_for('static', filename='js/fifty-idle.js'))
   link(rel='stylesheet' href=url_for('static', filename='css/fifty.css'))
 
 block content
-  article#icons
+  article#icons(data-nexturl=url_for('fifty.draw'))
     .ui.center.aligned.basic.segment
       .ui.massive.basic.icon.buttons
         button.ui.button#trigger

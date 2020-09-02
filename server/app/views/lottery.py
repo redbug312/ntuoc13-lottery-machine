@@ -19,8 +19,8 @@ def draw(role):
     except ValueError:
         return abort(401)  # When argument failed casting
     if not seed:
-        seed = random.randint(100000, 999999)
-        return redirect(url_for('.draw', role=role, i=0, seed=seed))
+        rand = random.randint(100000, 999999)
+        return redirect(url_for('.draw', role=role, i=0, seed=rand))
 
     prefix = prefixes[role]
     winners = db.draw(n=3, seed=seed, prefix=prefix)
@@ -30,8 +30,9 @@ def draw(role):
         return redirect(url_for('.draw', role=role))
 
     link = url_for('.draw', role=role, i=(i + 1), seed=seed)
-    winner = winners.iloc[i].to_dict()
-    return render_template('bingo.pug', link=link, winner=winner)
+    name = winners.iloc[i].NAME
+    desc = winners.iloc[i].STID
+    return render_template('bingo.pug', link=link, name=name, desc=desc)
 
 
 @lottery.route('/lottery/idle/<role>')

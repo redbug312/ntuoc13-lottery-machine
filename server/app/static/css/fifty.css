@@ -3,10 +3,6 @@ html:before {
   opacity: .5;
 }
 
-#winners {
-  display: none;
-}
-
 #winners .label {
   margin: .2rem;
 }
