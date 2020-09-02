@@ -18,7 +18,7 @@ def draw():
         rand = random.randint(100000, 999999)
         return redirect(url_for('.draw', i=0, seed=rand))
 
-    winners = db.draw(n=3, seed=seed, prefix='BRD', instagram=True)
+    winners = db.draw(n=2, seed=seed, instagram=True)
     if winners.empty:
         return abort(404)  # When no one can be drawn
     elif i >= winners.shape[0]:

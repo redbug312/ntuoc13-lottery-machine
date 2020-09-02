@@ -40,7 +40,7 @@ def db_lookup():
 
 @api.route('/api/db/lookup/<card>')
 def db_lookup_card(card):
-    result = db.lookup(card).to_dict(orient='records')
+    result = db.lookup(card).iloc[0].to_dict()
     return jsonify(result)
 
 
