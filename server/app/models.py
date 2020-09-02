@@ -18,11 +18,13 @@ class Attendees():
         groupby = lookup.groupby(by='TEAM')
         weights = groupby.size().values  # Index always be sorted in ascending order
         try:
-            return (groupby.sample(n=1, random_state=seed)
-                           .sample(n=n, random_state=seed, weights=weights))
+            chosen = (groupby.sample(n=1, random_state=seed)
+                             .sample(n=n, random_state=seed, weights=weights))
         except ValueError:
             n = min(n, lookup.shape[0])
-            return lookup.sample(n=n, random_state=seed)
+            chosen = lookup.sample(n=n, random_state=seed)
+        self.df.drop(chosen.index, inplace=True)  # Everyone chosen only once
+        return chosen
 
     def lookup(self, card=None, prefix=None, instagram=False):
         boolmask = self.universe.copy()  # Avoid passing dataframe ref
