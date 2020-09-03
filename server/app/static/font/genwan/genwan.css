@@ -1,0 +1,27 @@
+@font-face {
+    font-family: 源雲明體;
+    font-weight: 300;
+    font-style: normal;
+    src: url('GenWanMinJP-Light.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 源雲明體;
+    font-weight: 400;
+    font-style: normal;
+    src: url('GenWanMinJP-Regular.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 源雲明體;
+    font-weight: 500;
+    font-style: normal;
+    src: url('GenWanMinJP-Medium.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 源雲明體;
+    font-weight: 600;
+    font-style: normal;
+    src: url('GenWanMinJP-SemiBold.ttf') format('truetype');
+}

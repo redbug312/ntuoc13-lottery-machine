@@ -14,14 +14,14 @@ html:before {
 
 #winner {
   text-shadow:
-     4px  0px 2px RGBA(249,249,251,1),
-    -4px  0px 2px RGBA(249,249,251,1),
-     0px  4px 2px RGBA(249,249,251,1),
-     0px -4px 2px RGBA(249,249,251,1);
-     2px  2px 2px RGBA(249,249,251,1),
-    -2px -2px 2px RGBA(249,249,251,1),
-     2px -2px 2px RGBA(249,249,251,1),
-    -2px  2px 2px RGBA(249,249,251,1);
+     2px  0px 1px RGBA(249,249,251,1),
+    -2px  0px 1px RGBA(249,249,251,1),
+     0px  2px 1px RGBA(249,249,251,1),
+     0px -2px 1px RGBA(249,249,251,1);
+     1px  1px 1px RGBA(249,249,251,1),
+    -1px -1px 1px RGBA(249,249,251,1),
+     1px -1px 1px RGBA(249,249,251,1),
+    -1px  1px 1px RGBA(249,249,251,1);
 }
 
 // vim: set ts=2 sw=2 et:
