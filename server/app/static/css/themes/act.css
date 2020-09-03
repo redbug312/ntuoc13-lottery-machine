@@ -1,6 +1,6 @@
 html:before {
   background-image: linear-gradient(120deg, #f6d365 0%, #fcb985 100%);
-  opacity: .2;
+  opacity: .3;
 }
 
 #canvas .cube.color1 {
