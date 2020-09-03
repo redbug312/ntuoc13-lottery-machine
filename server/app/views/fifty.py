@@ -22,6 +22,7 @@ def draw():
     return render_template('fifty.pug', winners=winners)
 
 
+@fifty.route('/fifty')
 @fifty.route('/fifty/idle')
 def idle():
     return render_template('fifty.pug')
