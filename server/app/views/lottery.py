@@ -7,7 +7,7 @@ from ..models import db
 lottery = Blueprint('lottery', __name__)
 
 
-@lottery.route('/lottery/draw/<role>')
+@lottery.route('/lottery/<role>/draw')
 def draw(role):
     prefixes = {'undergrad': 'B', 'grad': 'RD'}
     if role not in prefixes.keys():
@@ -32,7 +32,13 @@ def draw(role):
     return render_template('bingo.pug', link=link, name=name, desc=desc)
 
 
-@lottery.route('/lottery/idle/<role>')
+@lottery.route('/lottery/<role>/idle')
 def idle(role):
     link = url_for('.draw', role=role)
+    return render_template('bingo.pug', link=link)
+
+
+@lottery.route('/lottery/<role>')
+def wait(role):
+    link = url_for('.idle', role=role)
     return render_template('bingo.pug', link=link)

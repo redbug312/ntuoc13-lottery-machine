@@ -1,16 +1,21 @@
-@import url(../font/cream/cream.css);
+@import url(../font/genseki/genseki.css);
+@import url(../font/genwan/genwan.css);
+@import url(../font/linux-libertine/linux-libertine.css);
 @import url(../font/wqy/wqy.css);
-
-html {
-  font-size: 16px;
-  font-family: 文泉驛微米黑, sans-serif;
-}
 
 html:before {
   content: '';
   width:  100vw;
   height: 100vh;
   position: absolute;
+}
+
+html {
+  font-size: 16px;
+}
+
+body {
+  font-family: 文泉驛微米黑, sans-serif;
 }
 
 body > .ui.grid.container {

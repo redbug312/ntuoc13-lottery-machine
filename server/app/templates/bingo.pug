@@ -1,9 +1,9 @@
 extends base
 
 block head
-  if '/draw' in request.path
+  if request.path.endswith('/draw')
     script(src=url_for('static', filename='js/bingo-draw.js'))
-  elif '/idle' in request.path
+  elif request.path.endswith('/idle')
     script(src=url_for('static', filename='js/bingo-idle.js'))
   if request.path.startswith('/lottery')
     link(rel='stylesheet' href=url_for('static', filename='css/themes/act.css'))
@@ -13,9 +13,8 @@ block head
 
 block content
   article#winner
-    if name
-      .ui.center.aligned.header= name
-        .sub.header= desc
+    .ui.center.aligned.header= name
+      .sub.header= desc
   article#canvas(data-nexturl=link)
     a(href=link hidden) next
     .ui.seven.column.grid.cubes

@@ -11,7 +11,6 @@ class Attendees():
                      .rename(COLUMNS, axis=1)
                      .drop_duplicates(subset='STID')
                      .fillna({'TEAM': 0, 'INST': ''}))
-        self.universe = self.df.TEAM.notnull()
 
     def draw(self, n=1, seed=None, prefix=None, instagram=False):
         lookup = self.lookup(prefix=prefix, instagram=instagram)
@@ -27,7 +26,7 @@ class Attendees():
         return chosen
 
     def lookup(self, card=None, prefix=None, instagram=False):
-        boolmask = self.universe.copy()  # Avoid passing dataframe ref
+        boolmask = self.df.NAME.notnull()
         if card:
             boolmask &= self.df.STID.eq(card.upper())
         if prefix:

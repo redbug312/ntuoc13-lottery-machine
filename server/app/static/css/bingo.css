@@ -41,16 +41,16 @@
 }
 
 #winner .header {
-  font-family: 凝書體, 金萱;
+  font-family: "Linux Libertine", 源石黑體;
+  font-weight: 600;
   font-size: 8em;
-  font-weight: normal;
   color: RGBA(0, 0, 0, 0.6);
 }
 
 #winner .sub.header {
-  font-family: 凝書體, 金萱;
+  font-family: 源石黑體;
+  font-weight: 700;
   font-size: .4em;
-  font-weight: bold;
   margin-top: -0.2em;
 }
 

@@ -30,3 +30,9 @@ def draw():
 def idle():
     link = url_for('.draw')
     return render_template('bingo.pug', link=link)
+
+
+@bonus.route('/bonus')
+def wait():
+    link = url_for('.idle')
+    return render_template('bingo.pug', link=link)

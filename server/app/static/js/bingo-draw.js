@@ -77,7 +77,7 @@ $(document).ready(function(){
   })
   .add({  // Rotate and scatter surrounding cubes
     targets: surrounds,
-    opacity: .3,
+    opacity: .4,
     translateX: () => anime.random(-8, 8) * 2.5 + 'rem',
     rotateZ: () => anime.random(-4, 4) * 15,
     delay: 400,
