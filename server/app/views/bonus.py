@@ -19,7 +19,7 @@ def draw():
 
     winners = db.draw(n=1, seed=seed, instagram=True)
     if winners.empty:
-        return abort(404)  # When no one can be drawn
+        return abort(403)  # When no one can be drawn
 
     link = url_for('.draw', seed=seed)
     instagram = '@%s' % winners.iloc[0].INST

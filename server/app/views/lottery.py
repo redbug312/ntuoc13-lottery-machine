@@ -24,7 +24,7 @@ def draw(role):
     prefix = prefixes[role]
     winners = db.draw(n=1, seed=seed, prefix=prefix)
     if winners.empty:
-        return abort(404)  # When no one can be drawn
+        return abort(403)  # When no one can be drawn
 
     link = url_for('.draw', role=role, seed=seed)
     name = winners.iloc[0].NAME
