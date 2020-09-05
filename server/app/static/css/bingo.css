@@ -42,14 +42,14 @@
 
 #winner .header {
   font-family: "Linux Libertine", 源石黑體;
-  font-weight: 600;
+  font-weight: 700;
   font-size: 8em;
   color: RGBA(0, 0, 0, 0.6);
 }
 
 #winner .sub.header {
   font-family: 源石黑體;
-  font-weight: 700;
+  font-weight: 800;
   font-size: .4em;
   margin-top: -0.2em;
 }
