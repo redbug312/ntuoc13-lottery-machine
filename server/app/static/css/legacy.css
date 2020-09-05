@@ -1,0 +1,5 @@
+html:before {
+  background: #303954 url('../assets/legacy.svg') no-repeat center center fixed;
+  background-size: auto 100vh;
+}
+

@@ -22,6 +22,11 @@ def index():
     return render_template('index.pug')
 
 
+@app.route('/legacy')
+def index_legacy():
+    return render_template('legacy.pug')
+
+
 @app.errorhandler(HTTPException)
 def handle_exception(error):
     title = 'Error %d' % error.code

@@ -1,5 +1,5 @@
 html:before {
-  background: #2F3655 url('../assets/background.png') no-repeat left center fixed;
+  background: #303954 url('../assets/logo.svg') no-repeat left center fixed;
   background-size: auto 100vh;
 }
 
@@ -14,6 +14,10 @@ html:before {
 
 #alert > .ui.message {
   background-color: #EECD2F;
+}
+
+#alert > .ui.message #timer-trigger {
+  cursor: pointer;
 }
 
 #alert > .ui.message input {
