@@ -1,7 +1,7 @@
 .PHONY: start
 
 PYTHON3 ?= python3
-ENV ?= . ../env/bin/activate; \
+ENV ?= . ../venv/bin/activate; \
     PYTHONPATH=$(shell realpath ..)
 
 start:
