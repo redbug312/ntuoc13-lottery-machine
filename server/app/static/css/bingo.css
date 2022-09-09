@@ -38,6 +38,7 @@
   transform: translateY(6rem);
   white-space: nowrap;
   z-index: 1;
+  pointer-events: none;
 }
 
 #winner .header {

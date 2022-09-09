@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, url_for, request, abort, redirect
+from flask import Blueprint, render_template, url_for, request, abort, redirect, current_app
 import random
 
 from ..models import db
@@ -23,6 +23,7 @@ def draw(role):
 
     prefix = prefixes[role]
     winners = db.draw(n=1, seed=seed, prefix=prefix)
+    current_app.logger.info(winners)  # TODO better output formating
     if winners.empty:
         return abort(403)  # When no one can be drawn
 

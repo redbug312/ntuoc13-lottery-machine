@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, url_for, request, abort, redirect
+from flask import Blueprint, render_template, url_for, request, abort, redirect, current_app
 import random
 
 from ..models import ig
@@ -19,6 +19,7 @@ def draw():
         return redirect(url_for('.draw', seed=seed))
 
     winners = ig.draw(n=n, seed=seed).sort_values().to_list()
+    current_app.logger.info(winners)
     return render_template('fifty.pug', winners=winners)
 
 

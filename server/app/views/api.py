@@ -28,7 +28,7 @@ def db_draw():
 @api.route('/api/db/lookup')
 def db_lookup():
     try:
-        prefix = request.args.get('prefix', default='BRD')
+        prefix = request.args.get('prefix', default='A-Z')
         instagram = request.args.get('instagram', default=False, type=bool)
     except ValueError:
         return abort(401)  # When argument failed casting

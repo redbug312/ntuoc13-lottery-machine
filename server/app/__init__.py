@@ -1,5 +1,6 @@
 from flask import Flask, render_template
 from werkzeug.exceptions import HTTPException
+import logging
 
 from .models import db, ig
 from .views.api import api
@@ -11,6 +12,7 @@ from .views.fifty import fifty
 app = Flask(__name__, template_folder='templates')
 app.jinja_env.add_extension('pypugjs.ext.jinja.PyPugJSExtension')
 app.config.from_pyfile('instance/default.py')
+app.logger.setLevel(logging.INFO)
 app.register_blueprint(api)
 app.register_blueprint(lottery)
 app.register_blueprint(bonus)

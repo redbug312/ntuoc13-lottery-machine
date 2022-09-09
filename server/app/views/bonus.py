@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, url_for, request, abort, redirect
+from flask import Blueprint, render_template, url_for, request, abort, redirect, current_app
 import random
 
 from ..models import db
@@ -18,6 +18,7 @@ def draw():
         return redirect(url_for('.draw', seed=rand))
 
     winners = db.draw(n=1, seed=seed, instagram=True)
+    current_app.logger.info(winners)
     if winners.empty:
         return abort(403)  # When no one can be drawn
 

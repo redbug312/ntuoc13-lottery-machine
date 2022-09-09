@@ -9,8 +9,9 @@ class Attendees():
         self.df = (pd.read_csv(app.config['ATTENDEES_CSV'])
                      .reindex(COLUMNS.keys(), axis=1)
                      .rename(COLUMNS, axis=1)
-                     .drop_duplicates(subset='STID')
+                     .drop_duplicates(subset='STID', keep='last')
                      .fillna({'TEAM': 0, 'INST': ''}))
+        self.df = self.df[self.df.INST.str.match(r'^[a-z0-9._]*$')]
 
     def draw(self, n=1, seed=None, prefix=None, instagram=False):
         lookup = self.lookup(prefix=prefix, instagram=instagram)
